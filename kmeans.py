@@ -45,8 +45,11 @@ def run_kmeans(features, k, seed_value):
             mean_x_centroids[cluster_indices[i]] += feature[0]
             mean_y_centroids[cluster_indices[i]] += feature[1]
             count_points_clusters[cluster_indices[i]] += 1
-        mean_x_centroids/=count_points_clusters
-        mean_y_centroids/=count_points_clusters
+        
+        for i in range(k):
+            if count_points_clusters[i] != 0:
+                mean_x_centroids[i]/=count_points_clusters[i]
+                mean_y_centroids[i]/=count_points_clusters[i]
         for i in range(len(centroids)):
             centroids[i]=[mean_x_centroids[i], mean_y_centroids[i]]
     return cluster_indices, centroids
@@ -73,12 +76,15 @@ def get_SC(features, cluster_indices):
     
     for i, distance_i in enumerate(distance_matrix):
         same_cluster_distances = distance_i[cluster_indices==cluster_indices[i]]
-        A=np.sum(same_cluster_distances)/(len(same_cluster_distances)-1)
+        if (len(same_cluster_distances)==1):
+            s_i_list[i]=0
+        else:
+            A=np.sum(same_cluster_distances)/(len(same_cluster_distances)-1)
 
-        diff_cluster_distances = distance_i[cluster_indices!=cluster_indices[i]]
-        B=np.sum(diff_cluster_distances)/(len(diff_cluster_distances))
+            diff_cluster_distances = distance_i[cluster_indices!=cluster_indices[i]]
+            B=np.sum(diff_cluster_distances)/(len(diff_cluster_distances))
 
-        s_i_list[i]=(B-A)/max(A,B)
+            s_i_list[i]=(B-A)/max(A,B)
 
     SC = np.sum(s_i_list)/len(s_i_list)
     return SC
@@ -129,7 +135,7 @@ def main():
         
     t1 = time.time()
     total = t1-t0
-    print("total time taken for running code", total, "seconds")
+    # print("total time taken for running code", total, "seconds")
     
 
 if __name__ == '__main__':
