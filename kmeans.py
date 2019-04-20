@@ -38,6 +38,8 @@ def run_kmeans(features, k, seed_value):
         for i,feature in enumerate(features):
             cluster_indices[i]=get_cluster_id(centroids, feature)
 
+        if iteration == num_iterations-1:
+            break
         mean_x_centroids = np.zeros(k)
         mean_y_centroids = np.zeros(k)
         count_points_clusters = np.zeros(k)

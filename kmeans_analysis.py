@@ -1,7 +1,10 @@
 from kmeans import get_results_kmeans
 import numpy as np
 from numpy import genfromtxt
+import matplotlib as mpl
+mpl.use('Agg')
 import matplotlib.pyplot as plt
+mpl.rcParams['figure.figsize'] = (7,7)
 
 def plot_error_graph(x_axis, y_axis, x_axis_label, y_axis_label, legend, fig_name, se):
     plt.errorbar(x_axis, y_axis, yerr=se, fmt='-', capsize=4, capthick=2)
@@ -111,8 +114,8 @@ def main():
             std_dev_wc_ssd_values.append(np.std(wc_ssd_list))
     print ("Avg WC-SSD list:", avg_wc_ssd_values)
     print ("Avg SC list:", avg_sc_values)
-    print ("Standard Deviation WC-SSD list:", avg_wc_ssd_values)
-    print ("Standard Deviation SC list:", avg_sc_values)
+    print ("Standard Deviation WC-SSD list:", std_dev_wc_ssd_values)
+    print ("Standard Deviation SC list:", std_dev_sc_values)
 
     for i in range(3):
         starting_index = i*len(k_values)

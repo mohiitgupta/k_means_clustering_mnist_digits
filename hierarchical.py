@@ -1,6 +1,9 @@
 import numpy as np
 from numpy import genfromtxt
+import matplotlib as mpl
+mpl.use('Agg')
 import matplotlib.pyplot as plt
+mpl.rcParams['figure.figsize'] = (7,7)
 import random
 import sys
 from scipy.cluster.hierarchy import dendrogram, linkage, cut_tree
@@ -94,7 +97,7 @@ def main():
         # print ("Method", method, "WC-SSD", wc_ssd_values)
         # print ("Method", method, "SC", sc_values)
         plot_graph(k_list, wc_ssd_values, 'k (number of clusters)','WC-SSD',['Sub Sample 100 images, method '+method], 'hierarchical_learning_curve_wc_ssd_'+str(method))
-        plot_graph(k_list, sc_values, 'k (number of clusters','SC',['Sub Sample 100 images, method '+method], 'hierarchical_learning_curve_sc_'+str(method))
+        plot_graph(k_list, sc_values, 'k (number of clusters)','SC',['Sub Sample 100 images, method '+method], 'hierarchical_learning_curve_sc_'+str(method))
 
 
     print ("We chose K=8 for all 3 methods single, compelete, average")
