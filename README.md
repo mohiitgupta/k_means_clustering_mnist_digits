@@ -9,5 +9,9 @@ For Hierarchical clustering, we use scipy library. We plot dendograms using the 
 The code for analysis for kmeans is present in `kmeans_analysis.py`.
 The code for plotting dendograms, curves and analysis for hierarchical clustering is in `hierarchical.py`.
 
-The dendogram plots given in the report are not of very high quality images. For analyzing dendograms, kindly take a look at the image files `dendogram_single.png`, `dendogram_complete.png` and `dendogram_average.png`
+The dendogram plots given in the report are not of very high quality images. For analyzing dendograms, kindly take a look at the image files `dendogram_single.png`, `dendogram_complete.png` and `dendogram_average.png`.
+
+The runtime for kmeans.py is around 150 seconds. The usage is given below:
+`python kmeans.py digits-embedding.csv 10`.
+
 Happy Coding!
