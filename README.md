@@ -12,6 +12,6 @@ The code for plotting dendograms, curves and analysis for hierarchical clusterin
 The dendogram plots given in the report are not of very high quality images. For analyzing dendograms, kindly take a look at the image files `dendogram_single.png`, `dendogram_complete.png` and `dendogram_average.png`.
 
 The runtime for kmeans.py is around 150 seconds. The usage is given below:
-`python kmeans.py digits-embedding.csv 10`.
+`python kmeans.py [dataFilename] [k_value]`.
 
 Happy Coding!
